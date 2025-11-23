@@ -5,3 +5,40 @@
 # В этом выражении никакие два знака арифметических операций не стоят рядом, порядок действий определяется по правилам математики.
 # В записи чисел отсутствуют незначащие (ведущие) нули.
 # В ответе укажите количество символов в найденном выражении.
+
+s = open('/home/balerso/infEGE/infEGE/task_24/24-300.txt').readline().strip()
+max_len = 0
+i = 0
+while i < len(s):
+    if s[i] in '+*':
+        i += 1
+        continue
+    j = i
+    while j < len(s) and s[j].isdigit():
+        j += 1
+    if s[i] == '0' and j - i > 1:
+        i += 1
+        continue
+    expr = s[i:j]
+    k = j
+    while k < len(s):
+        if s[k] not in '+*':
+            break
+        op = s[k]
+        k += 1
+        if k >= len(s) or not s[k].isdigit():
+            break
+        l = k
+        while l < len(s) and s[l].isdigit():
+            l += 1
+        if s[k] == '0' and l - k > 1:
+            break
+        expr += op + s[k:l]
+        try:
+            if eval(expr) == 0:
+                max_len = max(max_len, len(expr))
+        except:
+            pass
+        k = l
+    i += 1
+print(max_len)
