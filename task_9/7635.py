@@ -3,3 +3,21 @@
 # – в строке только одно число повторяется трижды, остальные числа различны;
 # – квадрат суммы всех повторяющихся чисел строки больше квадрата суммы всех её неповторяющихся чисел.
 # В ответе запишите только число.
+
+s = open("/home/balerso/infEGE/infEGE/task_9/9.txt")
+
+k = 0
+
+for line in s:
+    arr =[int(x) for x in line.split()]
+    x1 = [x for x in arr if arr.count(x) == 3]
+    x2 = [x for x in arr if arr.count(x) == 1]
+    
+    square_sum1 = sum(x1)**2
+    square_sum2 = sum(x2)**2
+    
+    if len(x1) == 3 and len(x2) == 3 and square_sum1 > square_sum2:
+        k += 1
+        
+print(k)
+    
