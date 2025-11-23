@@ -18,3 +18,34 @@
 # Опустить хвост
 # Повтори 9 [Вперёд 53 Направо 90 Вперёд 75 Направо 90]
 # Определите периметр области пересечения фигур, ограниченных заданными алгоритмом линиями.
+
+from turtle import *
+
+tracer(0)
+r = 25
+screensize(10000, 10000)
+
+for i in range(9):
+    fd(12 * r)
+    rt(90)
+    fd(6 * r)
+    rt(90)
+up()
+fd(r)
+rt(90)
+fd(3 * r)
+lt(90)
+down()
+for i in range(9):
+    fd(53 * r)
+    rt(90)
+    fd(75 * r)
+    rt(90)
+up()
+for x in range(-100, 100):
+    for y in range(-100, 100):
+        goto(x * r, y * r)
+        dot(3, 'blue')
+update()
+exitonclick()
+    
