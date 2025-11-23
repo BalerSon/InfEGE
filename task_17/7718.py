@@ -3,3 +3,16 @@
 # нечетно и все четыре элемента меньше максимального элемента, оканчивающегося на 3.
 # В ответе запишите количество найденных четверок, затем минимальную из сумм элементов таких четверок.
 # В данной задаче под четверкой подразумевается четыре подряд идущих элемента последовательности.
+
+a = [int(x) for x in open("/home/balerso/infEGE/infEGE/task_17/17-411.txt")]
+
+maximum = max(x for x in a if x % 10 == 3)
+minimum = 10**1000
+k = 0
+
+for i in range(0, len(a) - 3):
+    arr = [a[i], a[i + 1], a[i + 2], a[i + 3]]
+    if sum(1 for x in arr if x % 10 == 2) % 2 != 0 and all(num < maximum for num in arr):
+        k += 1
+        minimum = min(minimum, sum(arr))
+print(k, minimum)
