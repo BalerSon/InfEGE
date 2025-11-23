@@ -2,3 +2,7 @@
 # F(n) = 1, при n = 1;
 # F(n) = (n - 1)·F(n - 1) при n > 1.
 # Чему равно значение выражения (F(2024) + 2·F(2023)) / F(2022)?
+
+from math import *
+
+print((factorial(2023) + 2 * factorial(2022)) / factorial(2021))
